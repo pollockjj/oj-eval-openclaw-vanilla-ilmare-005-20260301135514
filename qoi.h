@@ -40,7 +40,6 @@ bool QoiDecode(uint32_t &width, uint32_t &height, uint8_t &channels, uint8_t &co
 bool QoiEncode(uint32_t width, uint32_t height, uint8_t channels, uint8_t colorspace) {
 
     if (channels != 3u && channels != 4u) return false;
-    if (colorspace > 1u) return false;
 
     // qoi-header part
 
@@ -164,7 +163,6 @@ bool QoiDecode(uint32_t &width, uint32_t &height, uint8_t &channels, uint8_t &co
     colorspace = QoiReadU8();
 
     if (channels != 3u && channels != 4u) return false;
-    if (colorspace > 1u) return false;
 
     int run = 0;
     uint64_t px_num = 1ull * width * height;
