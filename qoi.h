@@ -97,9 +97,9 @@ bool QoiEncode(uint32_t width, uint32_t height, uint8_t channels, uint8_t colors
             history[idx][3] = a;
 
             if (a == pre_a) {
-                int dr = static_cast<int>(r) - static_cast<int>(pre_r);
-                int dg = static_cast<int>(g) - static_cast<int>(pre_g);
-                int db = static_cast<int>(b) - static_cast<int>(pre_b);
+                int dr = static_cast<int>(static_cast<int8_t>(static_cast<uint8_t>(r - pre_r)));
+                int dg = static_cast<int>(static_cast<int8_t>(static_cast<uint8_t>(g - pre_g)));
+                int db = static_cast<int>(static_cast<int8_t>(static_cast<uint8_t>(b - pre_b)));
 
                 if (dr > -3 && dr < 2 && dg > -3 && dg < 2 && db > -3 && db < 2) {
                     QoiWriteU8(QOI_OP_DIFF_TAG |
